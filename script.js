@@ -8,16 +8,40 @@ const mainContent = document.getElementById('main-content');
 const countdownElement = document.getElementById('countdown');
 const smallCountdownElement = document.getElementById('small-countdown');
 
+// --- FUNGSI TRANSISI BARU ---
+function handleBirthdayTransition() {
+    // 1. Tambahkan kelas fade-out ke halaman countdown
+    preBirthdayContainer.classList.add('fade-out');
+
+    // 2. Tunggu animasi fade-out selesai (1.5 detik)
+    setTimeout(() => {
+        // 3. Sembunyikan halaman countdown secara permanen
+        preBirthdayContainer.style.display = 'none';
+
+        // 4. Tampilkan halaman utama dan jalankan semua fiturnya
+        mainContent.style.display = 'block';
+        mainContent.classList.add('visible'); // Memicu animasi fade-in
+        triggerBirthdaySurprise();
+        initInteractiveFeatures();
+        startSmallCountdown();
+
+    }, 1500); // Sesuaikan waktu ini dengan durasi animasi di CSS (1.5s)
+}
+
 function showCountdown() {
     preBirthdayContainer.style.display = 'flex';
     const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
         const distance = BIRTHDAY - now;
-        if (distance < 0) {
+
+        // --- INI BAGIAN YANG DIUBAH ---
+        if (distance < 1000) { // Berubah dari < 0 menjadi < 1000
             clearInterval(countdownInterval);
-            window.location.reload();
+            // Panggil fungsi transisi baru, bukan reload halaman
+            handleBirthdayTransition(); 
             return;
         }
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -28,10 +52,11 @@ function showCountdown() {
 
 function showMainContent() {
     mainContent.style.display = 'block';
+    mainContent.classList.add('visible'); // Tambahkan juga fade-in di sini
 }
 
 function triggerBirthdaySurprise() {
-    mainContent.style.display = 'block';
+    // Fungsi ini tidak perlu mengubah display lagi, karena sudah diatur
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
     const pixelShape = confetti.shapeFromPath({ path: 'M0,0 L10,0 L10,10 L0,10 Z' });
@@ -69,11 +94,9 @@ function handlePageLoad() {
     if (today < birthdayDay) {
         showCountdown();
     } else {
-        if (today.getTime() === birthdayDay.getTime()) {
-            triggerBirthdaySurprise();
-        } else {
-            showMainContent();
-        }
+        // Jika halaman dibuka saat hari H atau setelahnya
+        showMainContent(); // Langsung tampilkan konten utama dengan fade-in
+        triggerBirthdaySurprise();
         initInteractiveFeatures();
         startSmallCountdown();
     }
@@ -125,28 +148,20 @@ function initInteractiveFeatures() {
     }
 }
 
-// === KODE PEMUTAR MUSIK KITA BUNGKUS DALAM FUNGSI INI ===
 function initMusicPlayer() {
     const musicPlayer = document.getElementById('music-player');
     const audio = document.getElementById('background-audio');
     const playPauseBtn = document.getElementById('play-pause-btn');
     
-    // Periksa dulu apakah elemen-elemennya ada
-    if (!musicPlayer || !audio || !playPauseBtn) {
-        return; 
-    }
+    if (!musicPlayer || !audio || !playPauseBtn) return;
     
     const playIcon = playPauseBtn.querySelector('.play-icon');
     const pauseIcon = playPauseBtn.querySelector('.pause-icon');
-
     let isPlaying = false;
 
     function togglePlay() {
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play().catch(error => console.log("Autoplay ditolak oleh browser:", error));
-        }
+        if (isPlaying) { audio.pause(); } 
+        else { audio.play().catch(error => console.log("Autoplay ditolak oleh browser:", error)); }
     }
 
     playPauseBtn.addEventListener('click', (e) => {
@@ -171,8 +186,6 @@ function initMusicPlayer() {
     };
 }
 
-// === EVENT LISTENER UTAMA (DIPERBARUI) ===
-// Ini akan menjalankan kedua fungsi saat halaman siap
 document.addEventListener('DOMContentLoaded', () => {
     handlePageLoad();
     initMusicPlayer();
