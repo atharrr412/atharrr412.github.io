@@ -1,0 +1,395 @@
+/* GANTI SEMUA ISI FILE STYLE.CSS ANDA DENGAN KODE INI */
+
+/* Reset dan Pengaturan Dasar */
+:root {
+    --bg-color: #fef6e4;         /* Warna dasar: Cream lembut */
+    --primary-color: #fadadd;    /* Warna kontainer: Pink pastel */
+    --secondary-color: #fca4a4;   /* Warna sekunder: Peach */
+    --accent-color: #e98a8a;      /* Warna aksen/sorotan: Merah muda tua */
+    --text-color: #5d514a;        /* Warna teks: Cokelat tua */
+    --border-color: #e1b7b7;      /* Warna border: Cokelat muda */
+    --font-heading: 'Press Start 2P', cursive;
+    --font-body: 'DotGothic16', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; image-rendering: pixelated; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, #countdown, .main-header, .window-header, .caption, .filter-btn {
+    font-family: var(--font-heading);
+}
+
+/* ====================================================== */
+/* HALAMAN COUNTDOWN                                      */
+/* ====================================================== */
+.fullscreen-container {
+    display: none; /* Diatur oleh JS */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-image: url('latar-belakang.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 20vh;
+}
+
+#pre-birthday-container h1 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    line-height: 1.5;
+}
+
+#countdown {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+    background-color: var(--primary-color);
+    padding: 1.5rem 2.5rem;
+    margin-top: 2rem;
+    border: 2px solid var(--border-color);
+    animation: pulse 2.5s infinite ease-in-out;
+}
+
+.blinking-cursor { animation: blink 1s step-end infinite; }
+
+/* Animasi Snoopy Skuter */
+.scooter-animation {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 120px;
+    height: auto;
+    z-index: 2;
+    animation: drive-across 12s linear infinite;
+}
+
+/* Animasi Gelembung Cinta */
+.bubble-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(243, 163, 138, 0.3);
+    border: 2px solid rgba(243, 163, 138, 0.5);
+    border-radius: 50%;
+    animation: bubble-pop 4s infinite;
+}
+.bubble::before { content: '❤️'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20px; opacity: 0.7; }
+.bubble:nth-child(1) { top: 10%; left: 5%; animation-delay: 0.5s; }
+.bubble:nth-child(2) { top: 40%; left: 15%; animation-delay: 1.5s; width: 40px; height: 40px; }
+.bubble:nth-child(3) { top: 15%; right: 5%; left: auto; animation-delay: 2.5s; }
+.bubble:nth-child(4) { top: 50%; right: 10%; left: auto; animation-delay: 0.8s; width: 30px; height: 30px; }
+.bubble:nth-child(5) { top: 5%; left: 50%; animation-delay: 3s; }
+.bubble:nth-child(6) { top: 30%; left: 30%; animation-delay: 2s; width: 35px; height: 35px; }
+
+/* ====================================================== */
+/* HALAMAN KONTEN UTAMA                                   */
+/* ====================================================== */
+.main-container { display: none; } /* Diatur oleh JS */
+.main-header { width: 100%; padding: 0.8rem 1.5rem; background-color: var(--primary-color); text-align: center; font-size: 0.8rem; color: var(--secondary-color); border-bottom: 2px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+/* Cari aturan ini dan tambahkan dua baris baru */
+.hero-section {
+    position: relative; /* PENTING: Tambahkan baris ini */
+    overflow: hidden;   /* PENTING: Tambahkan baris ini */
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+.hero-content #main-h1 { font-size: 3rem; color: var(--accent-color); text-shadow: 4px 4px 0px var(--primary-color); margin-bottom: 1rem; }
+.hero-content .subtitle { font-size: 1.2rem; color: var(--text-color); margin-bottom: 3rem; }
+
+/* --- PERBAIKAN --- Gambar dibuat responsif */
+.pixel-character {
+    width: 100%; /* Gunakan persentase */
+    max-width: 500px; /* Batasi lebar maksimal di layar besar */
+    height: auto;
+}
+
+.pixel-window { max-width: 900px; margin: 4rem auto; border: 2px solid var(--border-color); background-color: var(--primary-color); box-shadow: 8px 8px 0px var(--border-color); }
+.window-header { background-color: var(--border-color); color: var(--text-color); padding: 0.6rem 1rem; font-size: 0.8rem; border-bottom: 2px solid var(--border-color); }
+.window-content { padding: 2rem; }
+.window-content h2 { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 2rem; }
+.window-content p { font-size: 1.1rem; line-height: 1.8; color: var(--text-color); max-width: 65ch; }
+
+/* --- PERBAIKAN --- Menggabungkan style filter control */
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-color); padding: 0.6rem 1rem; font-size: 0.8rem; cursor: pointer; transition: all 0.2s ease; }
+.filter-btn:hover { background-color: var(--border-color); color: white; }
+.filter-btn.active { background-color: var(--accent-color); color: var(--primary-color); border-color: var(--accent-color); }
+
+.silly-gif {
+    height: 150px;
+    width: auto;
+    margin-left: auto; /* Mendorong ke paling kanan */
+}
+
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.photo-item { border: 2px solid var(--border-color); background-color: var(--bg-color); padding: 8px; transition: transform 0.3s ease; }
+.photo-item:hover { transform: translateY(-5px); }
+.photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-item .caption {
+    color: var(--secondary-color);
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 8px 5px;      /* Memberi jarak atas-bawah 8px dan kiri-kanan 5px */
+    line-height: 1.6;        /* Menambah jarak antar baris jika teksnya panjang */
+    word-wrap: break-word;   /* Memastikan teks yang sangat panjang akan turun baris */
+}
+
+footer { text-align: center; padding: 4rem; color: var(--border-color); font-family: var(--font-heading); font-size: 0.7rem; }
+
+#flying-snoopy {
+    position: fixed;
+    width: 120px;
+    height: auto;
+    z-index: 50;
+    transition: transform 1s ease-in-out;
+}
+
+/* Animasi scroll */
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ====================================================== */
+/* KEYFRAMES ANIMASI                                      */
+/* ====================================================== */
+@keyframes drive-across { from { transform: translateX(-150px); } to { transform: translateX(100vw); } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes blink { from, to { color: transparent; } 50% { color: var(--accent-color); } }
+@keyframes bubble-pop { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.1); opacity: 1; } 80% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+
+/* ====================================================== */
+/* STYLE UNTUK BINGKAI RETRO                              */
+/* ====================================================== */
+.retro-frame {
+    display: inline-block; /* Agar bingkai mengikuti ukuran konten */
+    border: 2px solid var(--text-color);
+    background-color: var(--border-color);
+    padding: 8px;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.frame-header {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.frame-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-box {
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--bg-color);
+}
+
+.frame-content {
+    /* Memberi garis dalam di sekitar gambar */
+    border: 2px solid var(--text-color);
+    margin-top: 8px;
+    background-color: #fff; /* Memberi background putih jika gambar ada transparansi */
+    font-size: 0; /* Menghilangkan spasi aneh di bawah gambar */
+}
+
+/* Pastikan gambar di dalamnya responsif */
+.retro-frame .pixel-character {
+    width: 100%;
+    height: auto;
+    max-width: 500px; /* Batas ukuran maksimal gambar disesuaikan di sini */
+    display: block;
+}
+
+/* ====================================================== */
+/* STYLE UNTUK EFEK HUJAN PIXEL                           */
+/* ====================================================== */
+.particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Pastikan di belakang konten */
+}
+
+.particle {
+    position: absolute;
+    width: 15px; /* Ukuran dasar partikel */
+    height: 15px;
+    background-color: var(--accent-color);
+    border-radius: 50%; /* Default bentuknya lingkaran */
+    opacity: 0;
+    animation: fall 10s infinite linear;
+    bottom: 100%; /* Mulai dari atas layar */
+}
+
+/* Animasi jatuh */
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0.5;
+    }
+}
+
+/* Variasi untuk setiap partikel agar terlihat acak */
+.particle:nth-child(1) { left: 5%; animation-delay: 1s; animation-duration: 12s; }
+.particle:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 9s; width: 10px; height: 10px; }
+.particle:nth-child(3) { left: 25%; animation-delay: 0s; animation-duration: 15s; }
+.particle:nth-child(4) { left: 35%; animation-delay: 5s; animation-duration: 8s; width: 12px; height: 12px; }
+.particle:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 11s; }
+.particle:nth-child(6) { left: 55%; animation-delay: 7s; animation-duration: 13s; width: 10px; height: 10px; }
+.particle:nth-child(7) { left: 65%; animation-delay: 4s; animation-duration: 10s; }
+.particle:nth-child(8) { left: 75%; animation-delay: 1s; animation-duration: 9s; width: 12px; height: 12px; }
+.particle:nth-child(9) { left: 85%; animation-delay: 6s; animation-duration: 14s; }
+.particle:nth-child(10) { left: 95%; animation-delay: 2.5s; animation-duration: 8s; width: 10px; height: 10px; }
+.particle:nth-child(11) { left: 20%; animation-delay: 8s; animation-duration: 12s; }
+.particle:nth-child(12) { left: 80%; animation-delay: 9s; animation-duration: 10s; }
+
+/* ====================================================== */
+/* STYLE UNTUK DYNAMIC MUSIC PLAYER                       */
+/* ====================================================== */
+#music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #1c1c1e; /* Warna gelap khas Dynamic Island */
+    color: white;
+    border-radius: 50px; /* Membuat bentuk kapsul */
+    cursor: pointer;
+    overflow: hidden;
+
+    /* Awalnya kecil */
+    width: 250px; 
+    height: 50px;
+
+    /* Transisi untuk animasi melebar */
+    transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Style saat melebar */
+#music-player.expanded {
+    width: 350px;
+    height: 120px;
+    border-radius: 25px; /* Sedikit lebih kotak saat melebar */
+}
+
+.player-pill, .player-expanded-content {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.player-expanded-content {
+    opacity: 0; /* Sembunyikan konten ini di awal */
+    transition: opacity 0.3s ease;
+}
+
+#music-player.expanded .player-expanded-content {
+    opacity: 1;
+}
+
+#music-player.expanded .player-pill {
+    display: none; /* Sembunyikan judul saat melebar */
+}
+
+.music-icon { font-size: 20px; }
+.song-title { margin-left: 10px; font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.album-art { width: 90px; height: 90px; border-radius: 12px; }
+
+.controls {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play-pause-btn {
+    background: #333;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#play-pause-btn svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+/* ====================================================== */
+/* --- PENYESUAIAN MOBILE (RESPONSIVE) ---                */
+/* ====================================================== */
+@media (max-width: 768px) {
+    /* Halaman Countdown */
+    #pre-birthday-container h1 { font-size: 1.2rem; } /* Perkecil font judul */
+    #countdown { font-size: 1.5rem; padding: 1rem 1.5rem; } /* Perkecil kotak countdown */
+    .scooter-animation { width: 90px; } /* Perkecil Snoopy skuter */
+
+    /* Halaman Utama */
+    .hero-content #main-h1 { font-size: 2rem; }
+    .hero-content .subtitle { font-size: 1rem; }
+    .pixel-window { margin: 2rem 1rem; }
+    .window-content { padding: 1.5rem 1rem; }
+    .window-content h2 { font-size: 1.2rem; }
+    .window-content p { font-size: 1rem; }
+
+    /* Filter dan GIF */
+    .filter-controls { justify-content: center; } /* Pusatkan tombol filter */
+    .silly-gif {
+        margin-left: 0; /* Hapus margin agar tidak ke kanan */
+        height: 100px;  /* Perkecil ukuran GIF */
+        order: -1; /* Pindahkan GIF ke atas tombol-tombol */
+        margin-bottom: 1rem;
+    }
+}
+

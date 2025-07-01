@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Pixel Story</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="pre-birthday-container" class="fullscreen-container">
+        <div class="content-wrapper">
+            <h1>A Special Day is Loading...<span class="blinking-cursor">_</span></h1>
+            <div id="countdown"></div>
+        </div>
+        <div class="bubble-container">
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        </div>
+        <img src="snoopy.png" alt="Snoopy on a scooter" class="scooter-animation">
+    </div>
+
+    <div id="main-content" class="main-container">
+        <header class="main-header">
+            <div id="small-countdown"></div> 
+        </header>
+        
+        <img src="snoopy-pesawat.png" alt="Flying Snoopy" id="flying-snoopy">
+        
+        <section class="hero-section">
+            <div class="particle-container">
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+            </div>
+            <div class="hero-content">
+                <h1 id="main-h1">Happy Birthday Naila!</h1>
+                
+                <div class="retro-frame animate-on-scroll">
+                    <div class="frame-header">
+                        <span>Mine.exe</span>
+                        <div class="frame-buttons">
+                            <span class="btn-box"></span>
+                            <span class="btn-box"></span>
+                        </div>
+                    </div>
+                    <div class="frame-content">
+                        <img src="pic2.jpg" alt="Pixel Character" class="pixel-character">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="pixel-window animate-on-scroll">
+            <div class="window-header"><span>message.txt</span></div>
+            <div class="window-content" id="letter">
+                <h2>To My Cimpus,</h2>
+                <p>
+                    Happy 20th birthday, my love!
+This is the second year I get to celebrate your birthday with you, and I hope you always get everything you want and need, and that you're always surrounded by good people.
+I'm really looking forward to spending many more years with you. Happy birthday!
+                </p>
+            </div>
+        </div>
+
+        <div class="pixel-window animate-on-scroll">
+            <div class="window-header"><span>gallery.exe</span></div>
+            <div class="window-content" id="gallery">
+                <h2>Our Gallery</h2>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="petualangan">Petualangan</button>
+                    <button class="filter-btn" data-filter="kencan">Kencan</button>
+                    <button class="filter-btn" data-filter="konyol">Momen Konyol</button>
+                    <img src="hehe.gif" alt="Silly Moment GIF" class="silly-gif">
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-item" data-category="kencan"><img src="pic1.jpg" alt="Kenangan 1"><div class="caption">> best_date.jpg</div></div>
+                    <div class="photo-item" data-category="konyol"><img src="pic3.jpg" alt="Kenangan 2"><div class="caption">> silly_moment.gif</div></div>
+                    <div class="photo-item" data-category="petualangan"><img src="pic4.jpg" alt="Kenangan 3"><div class="caption">> vacation.png</div></div>
+                    <div class="photo-item" data-category="petualangan"><img src="pic5.jpg" alt="Kenangan 4"><div class="caption">> adventure_time.png</div></div>
+                    <div class="photo-item" data-category="kencan"><img src="pic6.jpg" alt="Kenangan 5"><div class="caption">> dinner.jpg</div></div>
+                    <div class="photo-item" data-category="konyol"><img src="pic7.jpg" alt="Kenangan 6"><div class="caption">> weird_face.png</div></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made with 100% <3 for You</p>
+        </footer>
+    </div>
+    
+    <div id="music-player">
+        <div class="player-pill">
+            <span class="music-icon">🎵</span>
+            <span class="song-title">Until I Found You - Stephen Sanchez</span>
+        </div>
+        <div class="player-expanded-content">
+            <img src="album-art.jpg" alt="Album Art" class="album-art">
+            <div class="controls">
+                <button id="play-pause-btn">
+                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    <svg class="pause-icon" style="display:none;" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <audio id="background-audio" src="backsound.mp3" loop></audio>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script> 
+</body>
+</html>
