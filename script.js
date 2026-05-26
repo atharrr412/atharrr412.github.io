@@ -1,7 +1,7 @@
 'use strict';
 
 // PENTING: Dalam JavaScript, bulan dihitung dari 0-11. Jadi bulan 6 adalah Juli.
-const BIRTHDAY = new Date(2025, 5, 27); 
+const BIRTHDAY = new Date(2025, 4, 27); 
 
 const preBirthdayContainer = document.getElementById('pre-birthday-container');
 const mainContent = document.getElementById('main-content');
